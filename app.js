@@ -53,6 +53,14 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/usuarios", (req, res)=> {
+  const query = SELECT * "FROM users";
+  db.all(query, (err, row) => {
+    console.log(`GET /USUARIOS ${JSON.stringify(row)}`);
+    res.send("Lista de usuários. ");
+  });
+});
+
 app.get("/cadastro", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/cadastro
   res.send(cadastro);
